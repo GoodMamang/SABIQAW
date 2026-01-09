@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Muhammad Sabiq Awwalin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0f172a;       /* Dark Blue Base */
+            --primary-blue: #1e40af;       /* Vibrant Blue */
+            --accent-yellow: #fbbf24;      /* Gold/Yellow */
+            --text-light: #f8fafc;
+            --text-dark: #334155;
+            --bg-light: #f1f5f9;
+            --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- HERO SECTION (HEADER) --- */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 60px 20px 100px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 20px;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .greeting {
+            color: var(--accent-yellow);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero-text .moto {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-yellow);
+            padding-left: 15px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-yellow);
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        .profile-wrapper {
+            position: relative;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: 320px 1fr; /* Sidebar Left, Content Right */
+            gap: 40px;
+            margin-top: -60px;
+        }
+
+        /* --- SIDEBAR INFO --- */
+        .sidebar-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 20px;
+            z-index: 10;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+        
+        .info-group:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 15px;
+        }
+
+        /* NEW SOCIAL MEDIA STYLE */
+        .social-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column; /* Vertical stack */
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-radius: 12px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid #e2e8f0;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .social-link i {
+            font-size: 18px;
+            width: 25px;
+            text-align: center;
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+
+        .social-link:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+        
+        .social-link:hover i {
+            color: white;
+        }
+
+        /* --- MAIN CONTENT SECTIONS --- */
+        main {
+            padding-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: #e2e8f0;
+        }
+
+        .section-title i {
+            color: var(--accent-yellow);
+            background: var(--primary-dark);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* SKILLS GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: 0.3s;
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .skill-card h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .skill-percent {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* TIMELINE (Education & Org) */
+        .timeline-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-year {
+            min-width: 100px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 14px;
+            padding-top: 2px;
+        }
+
+        .timeline-content {
+            border-left: 2px solid #e2e8f0;
+            padding-left: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-yellow);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--accent-yellow);
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .timeline-place {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header {
+                text-align: center;
+                clip-path: none;
+                padding-bottom: 40px;
+            }
+            .hero-container {
+                flex-direction: column-reverse;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .moto {
+                text-align: center;
+                border-left: none !important;
+                border-bottom: 3px solid var(--accent-yellow);
+                padding-bottom: 10px;
+                padding-left: 0 !important;
+            }
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: 0;
+            }
+            .sidebar-card {
+                position: relative;
+                top: 0;
+            }
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .timeline-year {
+                text-align: left;
+                min-width: auto;
+            }
+            .timeline-content {
+                border-left: 2px solid #e2e8f0;
+                padding-left: 15px;
+                margin-left: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-container">
+            <div class="hero-text">
+                <span class="greeting">Hello, I am</span>
+                <h1>Muhammad<br><span style="color: var(--accent-yellow);">Sabiq Awwalin</span></h1>
+                <p class="moto">"Minimal Jiga Aink wel"</p>
+                
+                <div class="hero-buttons">
+                    <a href="https://wa.me/62895385181948" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                    </a>
+                    <a href="#about" class="btn btn-outline">
+                        <i class="fas fa-arrow-down"></i> Profil
+                    </a>
+                </div>
+            </div>
+            
+            <div class="profile-wrapper">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi77Cqs7PY05YCxpQNcJ2-DbIIvpViNqvXxkCjOf7p-zFWHMUWFtvyRtJ7lGdb7RcLH6_rf2iy05vQw9DjYKKqNmWN2B1OSCU4J2YKkpT9PeF-ZLsN9jVNVBXuzVevu5sIp2mTrDinxzhm9OqCF1A3lZmVV87jLGjnasr-9CUERF9OHsqCX0Tq88ZZA/s320/1000615274.png" alt="Muhammad Sabiq Awwalin" class="profile-img">
+            </div>
+        </div>
+    </header>
+
+    <div class="container" id="about">
+        
+        <aside>
+            <div class="sidebar-card">
+                <h3 style="margin-bottom: 20px; color: #0f172a;">Personal Info</h3>
+                
+                <div class="info-group">
+                    <div class="info-label">Tempat, Tgl Lahir</div>
+                    <div class="info-value">Bandung, 08 Oktober 2002</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Domisili</div>
+                    <div class="info-value">Jl.Pst Almisbah Al Anwari</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Agama</div>
+                    <div class="info-value">Islam</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Status</div>
+                    <div class="info-value">Mahasiswa</div>
+                </div>
+
+                <div class="social-label">Kontak & Media Sosial</div>
+                <div class="social-links">
+                    
+                    <a href="https://wa.me/62895385181948" target="_blank" class="social-link" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i> 0895385181948
+                    </a>
+
+                    <a href="https://www.instagram.com/sabiqaw/" target="_blank" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i> @sabiqaw
+                    </a>
+                    
+                    <a href="https://www.tiktok.com/@sabiqaw" target="_blank" class="social-link" title="TikTok">
+                        <i class="fab fa-tiktok"></i> @sabiqaw
+                    </a>
+                    
+                    <a href="https://www.facebook.com/sabiqaw" target="_blank" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook-f"></i> @sabiqaw
+                    </a>
+                    
+                    <a href="https://www.threads.net/@sabiqaw" target="_blank" class="social-link" title="Threads">
+                        <i class="fa-solid fa-at"></i> @sabiqaw
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            
+            <div class="section-title">
+                <i class="fas fa-laptop-code"></i> Keahlian
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-users-cog"></i></div>
+                    <h4>Leadership</h4>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-microphone-alt"></i></div>
+                    <h4>Public Speaker</h4>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h4>Canva</h4>
+                    <span class="skill-percent">100%</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-video"></i></div>
+                    <h4>CapCut</h4>
+                    <span class="skill-percent">100%</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-bezier-curve"></i></div>
+                    <h4>Adobe AI</h4>
+                    <span class="skill-percent">100%</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-film"></i></div>
+                    <h4>After Effect</h4>
+                    <span class="skill-percent">100%</span>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <i class="fas fa-graduation-cap"></i> Pendidikan
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022 - Skrg</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">IAIT</div>
+                        <div class="timeline-place">Mahasiswa Aktif</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020 - 2022</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Universitas Teknologi Yogyakarta</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017 - 2020</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">MAN 2 Kota Tasikmalaya</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2015 - 2017</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">MTS Attarbiyah</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <i class="fas fa-flag"></i> Organisasi
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-year">2026 - 2027</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Sekretaris PC PMII Kota Tasikmalaya</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 - 2026</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Ketua Komisariat PMII IAIT</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Sekarang</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Ketua BSC PAC Tamansari</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Ketua Rayon Tarbiyah PMII IAIT</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2020 - 2022</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Sekjen HMJTS</div>
+                        <div class="timeline-place">Himpunan Mahasiswa Jurusan Teknik Sipil</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2018 - 2020</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Sekretaris OSIS MAN 2 Kota Tasikmalaya</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017 - Skrg</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Ketua Katar Unit 07 Kel. Argasari</div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
